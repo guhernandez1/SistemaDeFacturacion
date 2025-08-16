@@ -1,61 +1,51 @@
 package vista;
 
 import javax.swing.*;
-
 import Modelo.Producto;
 import Modelo.Sistema;
 import java.awt.*;
 
 public class VentanaCargaProducto extends JFrame {
-
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	private Sistema sistema;
-
+    private static final long serialVersionUID = 1L;
+    private Sistema sistema;
     private JTextField campoCodigo, campoDescripcion, campoPrecio, campoStock, campoStockMin;
 
     public VentanaCargaProducto(Sistema sistema) {
         this.sistema = sistema;
-
         setTitle("Carga de Producto");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(7, 2));
 
-        add(new JLabel("Código:"));
         campoCodigo = new JTextField();
-        add(campoCodigo);
-
-        add(new JLabel("Descripción:"));
         campoDescripcion = new JTextField();
-        add(campoDescripcion);
-
-        add(new JLabel("Precio Unitario:"));
         campoPrecio = new JTextField();
-        add(campoPrecio);
-
-        add(new JLabel("Stock Inicial:"));
         campoStock = new JTextField();
-        add(campoStock);
-
-        add(new JLabel("Stock Mínimo:"));
         campoStockMin = new JTextField();
-        add(campoStockMin);
+
+        add(new JLabel("Código:")); add(campoCodigo);
+        add(new JLabel("Descripción:")); add(campoDescripcion);
+        add(new JLabel("Precio Unitario:")); add(campoPrecio);
+        add(new JLabel("Stock Inicial:")); add(campoStock);
+        add(new JLabel("Stock Mínimo:")); add(campoStockMin);
 
         JButton botonAgregar = new JButton("Agregar Producto");
-        add(botonAgregar);
-
         JButton botonVerCatalogo = new JButton("Ver Productos");
-        add(botonVerCatalogo);
+        JButton botonVenta = new JButton("Ir a Ventas");
+
+        add(botonAgregar); add(botonVerCatalogo);
+        add(botonVenta);
 
         botonAgregar.addActionListener(e -> agregarProducto());
-
         botonVerCatalogo.addActionListener(e -> verProductos());
+        botonVenta.addActionListener(e -> new VentanaVenta(sistema));
 
-        setVisible(true);
+        
+        JButton botonHistorial = new JButton("Ver historial");
+        botonHistorial.addActionListener(ev -> new VentanaHistorialVentas(sistema));
+        add(botonHistorial);
+        
+setVisible(true);
     }
 
     private void agregarProducto() {
@@ -68,14 +58,10 @@ public class VentanaCargaProducto extends JFrame {
 
             Producto producto = new Producto(codigo, descripcion, precio, stock, stockMin);
             sistema.agregarProducto(producto);
-
             JOptionPane.showMessageDialog(this, "Producto agregado exitosamente");
 
-            campoCodigo.setText("");
-            campoDescripcion.setText("");
-            campoPrecio.setText("");
-            campoStock.setText("");
-            campoStockMin.setText("");
+            campoCodigo.setText(""); campoDescripcion.setText(""); campoPrecio.setText("");
+            campoStock.setText(""); campoStockMin.setText("");
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Error en los datos numéricos.");
@@ -94,7 +80,7 @@ public class VentanaCargaProducto extends JFrame {
     }
 
     public static void main(String[] args) {
-        Sistema sistema = new Sistema(); 
+        Sistema sistema = new Sistema();
         new VentanaCargaProducto(sistema);
     }
 }

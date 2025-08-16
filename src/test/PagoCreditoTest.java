@@ -1,7 +1,10 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import org.junit.Test;
+
 import Modelo.PagoCredito;
 
 public class PagoCreditoTest {
@@ -27,9 +30,11 @@ public class PagoCreditoTest {
         assertEquals(120.0, total, 0.001);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testCuotasInvalidasLanzanExcepcion() {
-        new PagoCredito(5); 
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+            new PagoCredito(5);
+        });
+        assertEquals("Cantidad de cuotas inválida. Solo se permite 2, 3 o 6.", ex.getMessage());
     }
 }
-

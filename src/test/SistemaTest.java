@@ -1,13 +1,13 @@
 package test;
 
-import Modelo.Producto;
-import Modelo.Sistema;
-
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.junit.Test;
+
+import Modelo.Producto;
+import Modelo.Sistema;
 
 public class SistemaTest {
 
@@ -25,8 +25,8 @@ public class SistemaTest {
     @Test
     public void testProductosEnStockMinimo() {
         Sistema sistema = new Sistema();
-        Producto p1 = new Producto("008", "Azúcar", 250.0, 2, 2); // stock mínimo
-        Producto p2 = new Producto("009", "Sal", 100.0, 5, 2); // no mínimo
+        Producto p1 = new Producto("008", "Azúcar", 250.0, 2, 2); 
+        Producto p2 = new Producto("009", "Sal", 100.0, 5, 2);   
 
         sistema.agregarProducto(p1);
         sistema.agregarProducto(p2);

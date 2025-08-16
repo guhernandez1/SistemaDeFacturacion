@@ -12,12 +12,16 @@ public class PagoCredito extends Pago {
 
     @Override
     public double calcularTotal(double montoBase) {
-        double recargo = switch (cuotas) {
-            case 2 -> 0.06;
-            case 3 -> 0.12;
-            case 6 -> 0.20;
-            default -> 0.0;
-        };
+        double recargo = 0.0;
+
+        if (cuotas == 2) {
+            recargo = 0.06;
+        } else if (cuotas == 3) {
+            recargo = 0.12;
+        } else if (cuotas == 6) {
+            recargo = 0.20;
+        }
+
         return montoBase * (1 + recargo);
     }
 

@@ -1,12 +1,11 @@
 package test;
 
-import Modelo.Producto;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
+import Modelo.Producto;
 import Modelo.DetalleVenta;
 
 public class DetalleVentaTest {

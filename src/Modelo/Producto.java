@@ -29,16 +29,25 @@ public class Producto {
         return stock <= stockMinimo;
     }
 
-    public String getCodigo() { return codigo; }
-    public String getDescripcion() { return descripcion; }
-    public double getPrecioUnitario() { return precioUnitario; }
-    public int getStock() { return stock; }
-    public int getStockMinimo() { return stockMinimo; }
+    public String getCodigo() {
+    	return codigo; }
+    public String getDescripcion() { 
+    	return descripcion; }
+    public double getPrecioUnitario() {
+    	return precioUnitario; }
+    public int getStock() {
+    	return stock; }
+    public int getStockMinimo() {
+    	return stockMinimo; }
 
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-    public void setPrecioUnitario(double precioUnitario) { this.precioUnitario = precioUnitario; }
-    public void setStock(int stock) { this.stock = stock; }
-    public void setStockMinimo(int stockMinimo) { this.stockMinimo = stockMinimo; }
+    public void setDescripcion(String descripcion) {
+    	this.descripcion = descripcion; }
+    public void setPrecioUnitario(double precioUnitario) {
+    	this.precioUnitario = precioUnitario; }
+    public void setStock(int stock) {
+    	this.stock = stock; }
+    public void setStockMinimo(int stockMinimo) {
+    	this.stockMinimo = stockMinimo; }
 
 	public Object getCantidadEnStock() {
 		// TODO Auto-generated method stub
